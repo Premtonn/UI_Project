@@ -1,0 +1,61 @@
+﻿using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
+using System.Drawing;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Windows.Forms;
+
+namespace UI_Product_maintenance_software
+{
+    public partial class Form1 : Form
+        {
+        public List<Items> Product { get; set; }
+
+            public Form1()
+            {
+            Product = GetProduct();
+            InitializeComponent();
+            }
+
+            private void Form1_Load(object sender, EventArgs e)
+            {
+            var product = this.Product;
+            Productgridlist.DataSource = product;
+            }
+
+            private List<Items> GetProduct()
+            {
+                var list = new List<Items>();
+                list.Add(new Items()
+                {
+                    Item_name = "Item 1",
+                    Unit_amount = 1,
+                    Unit_price = 100,
+                    Total = 100,
+                });
+
+                list.Add(new Items()
+                {
+                    Item_name = "Item 2",
+                    Unit_amount = 1,
+                    Unit_price = 75,
+                    Total = 75,
+                });
+
+                return list;
+            }
+
+        private void tableLayoutPanel1_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void Productgridlist_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+    }
+}
