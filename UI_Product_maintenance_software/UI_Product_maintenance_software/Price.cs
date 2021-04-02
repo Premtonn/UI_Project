@@ -17,7 +17,7 @@ namespace UI_Product_maintenance_software
         public Price()
         {
             InitializeComponent();
-            instance = this;
+            //instance = this;
         }
 
         private void Price_Load(object sender, EventArgs e)
