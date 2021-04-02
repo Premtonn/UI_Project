@@ -10,6 +10,7 @@ namespace UI_Product_maintenance_software
     {
         public Item()
         {
+            // this is something 
             Id = new Random().Next(1, 10000);
         }
        public int Id { get; set; }
