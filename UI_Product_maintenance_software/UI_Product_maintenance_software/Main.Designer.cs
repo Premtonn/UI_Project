@@ -40,6 +40,7 @@ namespace UI_Product_maintenance_software
             this.chName = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.chPrice = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.chAvailable = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.openFileDialogLoad = new System.Windows.Forms.OpenFileDialog();
             this.tableLayoutPanel1.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
             this.SuspendLayout();
@@ -131,6 +132,7 @@ namespace UI_Product_maintenance_software
             this.Load_button.TabIndex = 4;
             this.Load_button.Text = "Load";
             this.Load_button.UseVisualStyleBackColor = true;
+            this.Load_button.Click += new System.EventHandler(this.Load_button_Click);
             // 
             // Itemlistview
             // 
@@ -166,6 +168,12 @@ namespace UI_Product_maintenance_software
             this.chAvailable.Text = "Availability";
             this.chAvailable.Width = 590;
             // 
+            // openFileDialogLoad
+            // 
+            this.openFileDialogLoad.FileName = "openFileDialog1";
+            this.openFileDialogLoad.Filter = "CSV files (*.csv)|*.csv|All files (*.*)|*.*";
+            this.openFileDialogLoad.Title = "Select database";
+            // 
             // Main
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -194,6 +202,7 @@ namespace UI_Product_maintenance_software
         private System.Windows.Forms.ColumnHeader chAvailable;
         private System.Windows.Forms.Button Available_button;
         private System.Windows.Forms.Button Load_button;
+        private System.Windows.Forms.OpenFileDialog openFileDialogLoad;
     }
 }
 

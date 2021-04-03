@@ -37,5 +37,5 @@ C:\Users\hp\Desktop\myUiProject\UIproject\UI_Product_maintenance_software\UI_Pro
 C:\Users\hp\Desktop\myUiProject\UIproject\UI_Product_maintenance_software\UI_Product_maintenance_software\bin\Debug\System.Numerics.Vectors.xml
 C:\Users\hp\Desktop\myUiProject\UIproject\UI_Product_maintenance_software\UI_Product_maintenance_software\bin\Debug\System.Runtime.CompilerServices.Unsafe.xml
 C:\Users\hp\Desktop\myUiProject\UIproject\UI_Product_maintenance_software\UI_Product_maintenance_software\bin\Debug\System.Threading.Tasks.Extensions.xml
-C:\Users\hp\Desktop\myUiProject\UIproject\UI_Product_maintenance_software\UI_Product_maintenance_software\obj\Debug\UI_Product_maintenance_software.ProductRow.resources
 C:\Users\hp\Desktop\myUiProject\UIproject\UI_Product_maintenance_software\UI_Product_maintenance_software\obj\Debug\UI_Product_maintenance_software.csproj.CopyComplete
+C:\Users\hp\Desktop\myUiProject\UIproject\UI_Product_maintenance_software\UI_Product_maintenance_software\obj\Debug\UI_Product_maintenance_software.Main.resources

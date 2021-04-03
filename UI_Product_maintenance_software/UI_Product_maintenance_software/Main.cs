@@ -16,18 +16,7 @@ using System.Globalization;
 namespace UI_Product_maintenance_software
 {
     
-    public class ProductRow
-    {
-        public string ProductName { get; set; }
-        public float Price { get; set; }
-        public bool Availability { get; set; }
-        public ProductRow(string pName, float price, bool available)
-        {
-            ProductName = pName;
-            Price = price;
-            Availability = available;
-        }
-    }
+   
     public partial class Main : Form
     {
        
@@ -77,6 +66,7 @@ namespace UI_Product_maintenance_software
 
             }
             csvWriter.Flush();
+            writer.Close();
             MessageBox.Show("file created succefully !","Success!");
         }
 
@@ -100,6 +90,37 @@ namespace UI_Product_maintenance_software
             }
             else
                 Itemlistview.SelectedItems[0].SubItems[2].Text = "Yes";                
+        }
+
+        private void Load_button_Click(object sender, EventArgs e)
+        {
+            if(openFileDialogLoad.ShowDialog() == DialogResult.OK)
+            {
+                var reader = new StreamReader(openFileDialogLoad.FileName);
+                var csv_reader = new CsvReader(reader, CultureInfo.InvariantCulture);
+                var GetData = csv_reader.GetRecords<ProductRow>();
+                foreach( var row_data in  GetData)
+                {
+                    var is_avaialbe = row_data.Availability == true ? "Yes" : "No";
+                    string[] row = { row_data.ProductName, row_data.Price.ToString(), is_avaialbe };
+                    var listItem = new ListViewItem(row);
+                    Mainlist.Items.Add(listItem);
+                }
+                reader.Close();
+
+            }
+        }
+    }
+    public class ProductRow
+    {
+        public string ProductName { get; set; }
+        public float Price { get; set; }
+        public bool Availability { get; set; }
+        public ProductRow(string ProductName, float Price, bool Availability)
+        {
+            this.ProductName = ProductName;
+            this.Price = Price;
+            this.Availability = Availability;
         }
     }
 }
