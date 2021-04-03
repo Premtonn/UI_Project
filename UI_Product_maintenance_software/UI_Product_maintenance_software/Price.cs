@@ -14,6 +14,7 @@ namespace UI_Product_maintenance_software
     {
         public static Add instance;
 
+        
         public Price()
         {
             InitializeComponent();
@@ -32,13 +33,15 @@ namespace UI_Product_maintenance_software
 
         private void Addproduct_Save_Click(object sender, EventArgs e)
         {
-
-           // Mainlist.SelectedItems[0].SubItems[1].Text = Price_box;
+            var i = Main.instance.Mainlist.FocusedItem.Index;
+            Main.instance.Mainlist.Items[i].SubItems[1].Text = Price_box.Text;
+            // Mainlist.SelectedItems[0].SubItems[1].Text = Price_box;
             this.Close();
         }
 
         private void Price_box_TextChanged(object sender, EventArgs e)
         {
+            
 
         }
     }
