@@ -96,6 +96,7 @@ namespace UI_Product_maintenance_software
         {
             if(openFileDialogLoad.ShowDialog() == DialogResult.OK)
             {
+                this.file_path = openFileDialogLoad.FileName;
                 var reader = new StreamReader(openFileDialogLoad.FileName);
                 var csv_reader = new CsvReader(reader, CultureInfo.InvariantCulture);
                 var GetData = csv_reader.GetRecords<ProductRow>();
