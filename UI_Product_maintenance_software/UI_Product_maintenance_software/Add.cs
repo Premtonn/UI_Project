@@ -32,10 +32,29 @@ namespace UI_Product_maintenance_software
 
         private void Addproduct_Save_Click(object sender, EventArgs e)
         {
-            string[] row = { Name_box.Text, Price_box.Text, AvailabilityRadio};
-            var listItem = new ListViewItem(row);
-            Main.instance.Mainlist.Items.Add(listItem);
-            this.Close();
+            bool is_exist = false;
+            for(int i=0; i < Main.instance.Mainlist.Items.Count; i++)
+            {
+                if(Name_box.Text == Main.instance.Mainlist.Items[i].SubItems[0].Text)
+                {
+                    is_exist = true;
+                    break;
+                    
+                }
+            }
+            if (is_exist)
+            {
+                MessageBox.Show("product already exist !", "failed !");
+                this.Close();
+
+            }
+            else
+            {
+                string[] row = { Name_box.Text, Price_box.Text, AvailabilityRadio };
+                var listItem = new ListViewItem(row);
+                Main.instance.Mainlist.Items.Add(listItem);
+                this.Close();
+            }
         }
 
         private void Addproduct_Cancel_Click(object sender, EventArgs e)
