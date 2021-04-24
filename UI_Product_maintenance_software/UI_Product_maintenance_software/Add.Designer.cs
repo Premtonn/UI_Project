@@ -84,6 +84,7 @@ namespace UI_Product_maintenance_software
             this.Price_box.Name = "Price_box";
             this.Price_box.Size = new System.Drawing.Size(237, 20);
             this.Price_box.TabIndex = 4;
+            this.Price_box.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Price_box_KeyPress);
             // 
             // labelavailable
             // 

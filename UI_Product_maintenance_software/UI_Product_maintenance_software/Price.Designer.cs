@@ -52,6 +52,7 @@ namespace UI_Product_maintenance_software
             this.Price_box.Size = new System.Drawing.Size(146, 20);
             this.Price_box.TabIndex = 1;
             this.Price_box.TextChanged += new System.EventHandler(this.Price_box_TextChanged);
+            this.Price_box.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Price_box_KeyPress);
             // 
             // Addproduct_Save
             // 

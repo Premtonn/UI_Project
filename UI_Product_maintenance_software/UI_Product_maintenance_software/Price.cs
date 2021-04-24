@@ -43,5 +43,13 @@ namespace UI_Product_maintenance_software
         {
 
         }
+
+        private void Price_box_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (((!char.IsNumber(e.KeyChar)) & (!char.IsControl(e.KeyChar)) & (!char.IsPunctuation(e.KeyChar))))
+            {
+                e.Handled = true;
+            }
+        }
     }
 }
