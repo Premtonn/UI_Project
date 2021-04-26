@@ -17,8 +17,22 @@ namespace cashRegister
 {
     public partial class cashMain : MetroForm
     {
+        public static cashMain instance;
+        public static string getSelectedProductName()
+        {
+            var index_row = cashMain.instance.productGrid1.CurrentCell.RowIndex;
+            return cashMain.instance.productGrid1.Rows[index_row].Cells["Products"].Value.ToString();
+        }
+
+        //public MetroFramework.Controls.MetroGrid ProductGrid
+        //{
+        //    get { return productGrid1; }
+        //}
+        //public MetroFramework.Controls.MetroGrid SaleGrid { get { return salesGrid1; } }
         public cashMain()
         {
+            // instance of the current  form
+            instance = this;
             InitializeComponent();
             InitialiseProductGrid();
             InitialiseSalesGrid();

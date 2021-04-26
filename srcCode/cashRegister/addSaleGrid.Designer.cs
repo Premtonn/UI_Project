@@ -49,6 +49,7 @@ namespace cashRegister
             this.unitsBox.Name = "unitsBox";
             this.unitsBox.Size = new System.Drawing.Size(100, 20);
             this.unitsBox.TabIndex = 1;
+            this.unitsBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.unitsBox_KeyPress);
             // 
             // add_to_grid_btn
             // 
@@ -58,6 +59,7 @@ namespace cashRegister
             this.add_to_grid_btn.TabIndex = 2;
             this.add_to_grid_btn.Text = "add";
             this.add_to_grid_btn.UseVisualStyleBackColor = true;
+            this.add_to_grid_btn.Click += new System.EventHandler(this.add_to_grid_btn_Click);
             // 
             // addSaleGrid
             // 

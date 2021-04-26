@@ -13,14 +13,27 @@ namespace cashRegister
     public partial class addSaleGrid : Form
     {
 
-        public int index_row { get; set; }
+        
+        
         
         public addSaleGrid()
         {
             InitializeComponent();
-            //index_row = cashMain.productGrid1.CurrentCell.RowIndex;
+            
+            this.Text = cashMain.getSelectedProductName();
         }
-       
-       
+
+        private void add_to_grid_btn_Click(object sender, EventArgs e)
+        {
+
+
+            
+        }
+
+        // only allow numbers
+        private void unitsBox_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            e.Handled = !char.IsDigit(e.KeyChar) && !char.IsControl(e.KeyChar);
+        }
     }
 }
