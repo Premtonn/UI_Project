@@ -36,25 +36,27 @@ namespace cashRegister
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle11 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle12 = new System.Windows.Forms.DataGridViewCellStyle();
             this.metroPanel1 = new MetroFramework.Controls.MetroPanel();
-            this.productGrid1 = new MetroFramework.Controls.MetroGrid();
             this.metroPanel2 = new MetroFramework.Controls.MetroPanel();
+            this.addbtn = new System.Windows.Forms.Button();
             this.loadProducts = new System.Windows.Forms.Button();
+            this.productGrid1 = new MetroFramework.Controls.MetroGrid();
             this.metroPanel3 = new MetroFramework.Controls.MetroPanel();
-            this.salesGrid1 = new MetroFramework.Controls.MetroGrid();
-            this.controlPanelItems = new MetroFramework.Controls.MetroPanel();
-            this.deletebtn = new System.Windows.Forms.Button();
-            this.cancelBtn = new System.Windows.Forms.Button();
             this.metroPanel4 = new MetroFramework.Controls.MetroPanel();
-            this.label1 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
             this.button1 = new System.Windows.Forms.Button();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
+            this.controlPanelItems = new MetroFramework.Controls.MetroPanel();
+            this.cancelBtn = new System.Windows.Forms.Button();
+            this.deletebtn = new System.Windows.Forms.Button();
+            this.salesGrid1 = new MetroFramework.Controls.MetroGrid();
+            this.load_dialog = new System.Windows.Forms.OpenFileDialog();
             this.metroPanel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.productGrid1)).BeginInit();
             this.metroPanel2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.productGrid1)).BeginInit();
             this.metroPanel3.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.salesGrid1)).BeginInit();
-            this.controlPanelItems.SuspendLayout();
             this.metroPanel4.SuspendLayout();
+            this.controlPanelItems.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.salesGrid1)).BeginInit();
             this.SuspendLayout();
             // 
             // metroPanel1
@@ -73,8 +75,47 @@ namespace cashRegister
             this.metroPanel1.VerticalScrollbarHighlightOnWheel = false;
             this.metroPanel1.VerticalScrollbarSize = 10;
             // 
+            // metroPanel2
+            // 
+            this.metroPanel2.Controls.Add(this.addbtn);
+            this.metroPanel2.Controls.Add(this.loadProducts);
+            this.metroPanel2.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.metroPanel2.HorizontalScrollbarBarColor = true;
+            this.metroPanel2.HorizontalScrollbarHighlightOnWheel = false;
+            this.metroPanel2.HorizontalScrollbarSize = 10;
+            this.metroPanel2.Location = new System.Drawing.Point(0, 270);
+            this.metroPanel2.Name = "metroPanel2";
+            this.metroPanel2.Size = new System.Drawing.Size(252, 100);
+            this.metroPanel2.TabIndex = 1;
+            this.metroPanel2.VerticalScrollbarBarColor = true;
+            this.metroPanel2.VerticalScrollbarHighlightOnWheel = false;
+            this.metroPanel2.VerticalScrollbarSize = 10;
+            // 
+            // addbtn
+            // 
+            this.addbtn.Enabled = false;
+            this.addbtn.Location = new System.Drawing.Point(100, 3);
+            this.addbtn.Name = "addbtn";
+            this.addbtn.Size = new System.Drawing.Size(77, 45);
+            this.addbtn.TabIndex = 3;
+            this.addbtn.Text = "add";
+            this.addbtn.UseVisualStyleBackColor = true;
+            this.addbtn.Click += new System.EventHandler(this.addbtn_Click);
+            // 
+            // loadProducts
+            // 
+            this.loadProducts.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
+            this.loadProducts.Location = new System.Drawing.Point(177, 3);
+            this.loadProducts.Name = "loadProducts";
+            this.loadProducts.Size = new System.Drawing.Size(75, 46);
+            this.loadProducts.TabIndex = 2;
+            this.loadProducts.Text = "Load";
+            this.loadProducts.UseVisualStyleBackColor = false;
+            this.loadProducts.Click += new System.EventHandler(this.loadProducts_Click);
+            // 
             // productGrid1
             // 
+            this.productGrid1.AllowUserToAddRows = false;
             this.productGrid1.AllowUserToResizeRows = false;
             this.productGrid1.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
             this.productGrid1.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
@@ -102,6 +143,7 @@ namespace cashRegister
             this.productGrid1.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
             this.productGrid1.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
             this.productGrid1.Location = new System.Drawing.Point(0, 0);
+            this.productGrid1.MultiSelect = false;
             this.productGrid1.Name = "productGrid1";
             this.productGrid1.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
             dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
@@ -116,31 +158,6 @@ namespace cashRegister
             this.productGrid1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.productGrid1.Size = new System.Drawing.Size(252, 370);
             this.productGrid1.TabIndex = 1;
-            // 
-            // metroPanel2
-            // 
-            this.metroPanel2.Controls.Add(this.loadProducts);
-            this.metroPanel2.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.metroPanel2.HorizontalScrollbarBarColor = true;
-            this.metroPanel2.HorizontalScrollbarHighlightOnWheel = false;
-            this.metroPanel2.HorizontalScrollbarSize = 10;
-            this.metroPanel2.Location = new System.Drawing.Point(0, 270);
-            this.metroPanel2.Name = "metroPanel2";
-            this.metroPanel2.Size = new System.Drawing.Size(252, 100);
-            this.metroPanel2.TabIndex = 1;
-            this.metroPanel2.VerticalScrollbarBarColor = true;
-            this.metroPanel2.VerticalScrollbarHighlightOnWheel = false;
-            this.metroPanel2.VerticalScrollbarSize = 10;
-            // 
-            // loadProducts
-            // 
-            this.loadProducts.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
-            this.loadProducts.Location = new System.Drawing.Point(177, 3);
-            this.loadProducts.Name = "loadProducts";
-            this.loadProducts.Size = new System.Drawing.Size(75, 46);
-            this.loadProducts.TabIndex = 2;
-            this.loadProducts.Text = "Load";
-            this.loadProducts.UseVisualStyleBackColor = false;
             // 
             // metroPanel3
             // 
@@ -158,6 +175,100 @@ namespace cashRegister
             this.metroPanel3.VerticalScrollbarBarColor = true;
             this.metroPanel3.VerticalScrollbarHighlightOnWheel = false;
             this.metroPanel3.VerticalScrollbarSize = 10;
+            // 
+            // metroPanel4
+            // 
+            this.metroPanel4.Controls.Add(this.button1);
+            this.metroPanel4.Controls.Add(this.label2);
+            this.metroPanel4.Controls.Add(this.label1);
+            this.metroPanel4.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.metroPanel4.HorizontalScrollbarBarColor = true;
+            this.metroPanel4.HorizontalScrollbarHighlightOnWheel = false;
+            this.metroPanel4.HorizontalScrollbarSize = 10;
+            this.metroPanel4.Location = new System.Drawing.Point(0, 204);
+            this.metroPanel4.Name = "metroPanel4";
+            this.metroPanel4.Size = new System.Drawing.Size(508, 166);
+            this.metroPanel4.TabIndex = 4;
+            this.metroPanel4.VerticalScrollbarBarColor = true;
+            this.metroPanel4.VerticalScrollbarHighlightOnWheel = false;
+            this.metroPanel4.VerticalScrollbarSize = 10;
+            // 
+            // button1
+            // 
+            this.button1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
+            this.button1.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.button1.FlatAppearance.BorderSize = 0;
+            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button1.Location = new System.Drawing.Point(0, 120);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(336, 46);
+            this.button1.TabIndex = 4;
+            this.button1.Text = "Save";
+            this.button1.UseVisualStyleBackColor = false;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Dock = System.Windows.Forms.DockStyle.Right;
+            this.label2.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Location = new System.Drawing.Point(336, 0);
+            this.label2.Name = "label2";
+            this.label2.Padding = new System.Windows.Forms.Padding(3);
+            this.label2.Size = new System.Drawing.Size(111, 28);
+            this.label2.TabIndex = 3;
+            this.label2.Text = "Total Price:";
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Dock = System.Windows.Forms.DockStyle.Right;
+            this.label1.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(447, 0);
+            this.label1.Name = "label1";
+            this.label1.Padding = new System.Windows.Forms.Padding(3);
+            this.label1.Size = new System.Drawing.Size(61, 28);
+            this.label1.TabIndex = 2;
+            this.label1.Text = "0.00€";
+            // 
+            // controlPanelItems
+            // 
+            this.controlPanelItems.Controls.Add(this.cancelBtn);
+            this.controlPanelItems.Controls.Add(this.deletebtn);
+            this.controlPanelItems.Dock = System.Windows.Forms.DockStyle.Top;
+            this.controlPanelItems.HorizontalScrollbarBarColor = true;
+            this.controlPanelItems.HorizontalScrollbarHighlightOnWheel = false;
+            this.controlPanelItems.HorizontalScrollbarSize = 10;
+            this.controlPanelItems.Location = new System.Drawing.Point(0, 150);
+            this.controlPanelItems.Name = "controlPanelItems";
+            this.controlPanelItems.Size = new System.Drawing.Size(508, 54);
+            this.controlPanelItems.TabIndex = 3;
+            this.controlPanelItems.VerticalScrollbarBarColor = true;
+            this.controlPanelItems.VerticalScrollbarHighlightOnWheel = false;
+            this.controlPanelItems.VerticalScrollbarSize = 10;
+            // 
+            // cancelBtn
+            // 
+            this.cancelBtn.BackColor = System.Drawing.Color.White;
+            this.cancelBtn.Dock = System.Windows.Forms.DockStyle.Right;
+            this.cancelBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.cancelBtn.Location = new System.Drawing.Point(296, 0);
+            this.cancelBtn.Name = "cancelBtn";
+            this.cancelBtn.Size = new System.Drawing.Size(106, 54);
+            this.cancelBtn.TabIndex = 3;
+            this.cancelBtn.Text = "Cancel";
+            this.cancelBtn.UseVisualStyleBackColor = false;
+            // 
+            // deletebtn
+            // 
+            this.deletebtn.BackColor = System.Drawing.Color.White;
+            this.deletebtn.Dock = System.Windows.Forms.DockStyle.Right;
+            this.deletebtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.deletebtn.Location = new System.Drawing.Point(402, 0);
+            this.deletebtn.Name = "deletebtn";
+            this.deletebtn.Size = new System.Drawing.Size(106, 54);
+            this.deletebtn.TabIndex = 2;
+            this.deletebtn.Text = "Delete";
+            this.deletebtn.UseVisualStyleBackColor = false;
             // 
             // salesGrid1
             // 
@@ -203,99 +314,10 @@ namespace cashRegister
             this.salesGrid1.Size = new System.Drawing.Size(508, 150);
             this.salesGrid1.TabIndex = 2;
             // 
-            // controlPanelItems
+            // load_dialog
             // 
-            this.controlPanelItems.Controls.Add(this.cancelBtn);
-            this.controlPanelItems.Controls.Add(this.deletebtn);
-            this.controlPanelItems.Dock = System.Windows.Forms.DockStyle.Top;
-            this.controlPanelItems.HorizontalScrollbarBarColor = true;
-            this.controlPanelItems.HorizontalScrollbarHighlightOnWheel = false;
-            this.controlPanelItems.HorizontalScrollbarSize = 10;
-            this.controlPanelItems.Location = new System.Drawing.Point(0, 150);
-            this.controlPanelItems.Name = "controlPanelItems";
-            this.controlPanelItems.Size = new System.Drawing.Size(508, 54);
-            this.controlPanelItems.TabIndex = 3;
-            this.controlPanelItems.VerticalScrollbarBarColor = true;
-            this.controlPanelItems.VerticalScrollbarHighlightOnWheel = false;
-            this.controlPanelItems.VerticalScrollbarSize = 10;
-            // 
-            // deletebtn
-            // 
-            this.deletebtn.BackColor = System.Drawing.Color.White;
-            this.deletebtn.Dock = System.Windows.Forms.DockStyle.Right;
-            this.deletebtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.deletebtn.Location = new System.Drawing.Point(402, 0);
-            this.deletebtn.Name = "deletebtn";
-            this.deletebtn.Size = new System.Drawing.Size(106, 54);
-            this.deletebtn.TabIndex = 2;
-            this.deletebtn.Text = "Delete";
-            this.deletebtn.UseVisualStyleBackColor = false;
-            // 
-            // cancelBtn
-            // 
-            this.cancelBtn.BackColor = System.Drawing.Color.White;
-            this.cancelBtn.Dock = System.Windows.Forms.DockStyle.Right;
-            this.cancelBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.cancelBtn.Location = new System.Drawing.Point(296, 0);
-            this.cancelBtn.Name = "cancelBtn";
-            this.cancelBtn.Size = new System.Drawing.Size(106, 54);
-            this.cancelBtn.TabIndex = 3;
-            this.cancelBtn.Text = "Cancel";
-            this.cancelBtn.UseVisualStyleBackColor = false;
-            // 
-            // metroPanel4
-            // 
-            this.metroPanel4.Controls.Add(this.button1);
-            this.metroPanel4.Controls.Add(this.label2);
-            this.metroPanel4.Controls.Add(this.label1);
-            this.metroPanel4.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.metroPanel4.HorizontalScrollbarBarColor = true;
-            this.metroPanel4.HorizontalScrollbarHighlightOnWheel = false;
-            this.metroPanel4.HorizontalScrollbarSize = 10;
-            this.metroPanel4.Location = new System.Drawing.Point(0, 204);
-            this.metroPanel4.Name = "metroPanel4";
-            this.metroPanel4.Size = new System.Drawing.Size(508, 166);
-            this.metroPanel4.TabIndex = 4;
-            this.metroPanel4.VerticalScrollbarBarColor = true;
-            this.metroPanel4.VerticalScrollbarHighlightOnWheel = false;
-            this.metroPanel4.VerticalScrollbarSize = 10;
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Dock = System.Windows.Forms.DockStyle.Right;
-            this.label1.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(447, 0);
-            this.label1.Name = "label1";
-            this.label1.Padding = new System.Windows.Forms.Padding(3);
-            this.label1.Size = new System.Drawing.Size(61, 28);
-            this.label1.TabIndex = 2;
-            this.label1.Text = "0.00€";
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Dock = System.Windows.Forms.DockStyle.Right;
-            this.label2.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(336, 0);
-            this.label2.Name = "label2";
-            this.label2.Padding = new System.Windows.Forms.Padding(3);
-            this.label2.Size = new System.Drawing.Size(111, 28);
-            this.label2.TabIndex = 3;
-            this.label2.Text = "Total Price:";
-            // 
-            // button1
-            // 
-            this.button1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
-            this.button1.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.button1.FlatAppearance.BorderSize = 0;
-            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button1.Location = new System.Drawing.Point(0, 120);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(336, 46);
-            this.button1.TabIndex = 4;
-            this.button1.Text = "Save";
-            this.button1.UseVisualStyleBackColor = false;
+            this.load_dialog.FileName = "product.csv";
+            this.load_dialog.Filter = "CSV files (*.csv)|*.csv|All files (*.*)|*.*";
             // 
             // cashMain
             // 
@@ -309,13 +331,13 @@ namespace cashRegister
             this.Theme = MetroFramework.MetroThemeStyle.Default;
             this.Load += new System.EventHandler(this.Form1_Load);
             this.metroPanel1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.productGrid1)).EndInit();
             this.metroPanel2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.productGrid1)).EndInit();
             this.metroPanel3.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.salesGrid1)).EndInit();
-            this.controlPanelItems.ResumeLayout(false);
             this.metroPanel4.ResumeLayout(false);
             this.metroPanel4.PerformLayout();
+            this.controlPanelItems.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.salesGrid1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -325,7 +347,6 @@ namespace cashRegister
         private MetroFramework.Controls.MetroPanel metroPanel1;
         private MetroFramework.Controls.MetroPanel metroPanel2;
         private System.Windows.Forms.Button loadProducts;
-        private MetroFramework.Controls.MetroGrid productGrid1;
         private MetroFramework.Controls.MetroPanel metroPanel3;
         private MetroFramework.Controls.MetroGrid salesGrid1;
         private MetroFramework.Controls.MetroPanel controlPanelItems;
@@ -335,6 +356,9 @@ namespace cashRegister
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Button addbtn;
+        private System.Windows.Forms.OpenFileDialog load_dialog;
+        public MetroFramework.Controls.MetroGrid productGrid1;
     }
 }
 
