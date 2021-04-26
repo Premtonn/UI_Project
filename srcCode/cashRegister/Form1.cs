@@ -91,6 +91,7 @@ namespace cashRegister
             frm.ShowDialog();
         }
     }
+    // class used to read the data
     public class ProductRow
     {
         public string ProductName { get; set; }
@@ -98,7 +99,7 @@ namespace cashRegister
         public bool Availability { get; set; }
         public ProductRow(string ProductName, float Price, bool Availability)
         {
-
+            
             this.ProductName = ProductName;
             this.Price = Price;
             this.Availability = Availability;
