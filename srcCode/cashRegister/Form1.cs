@@ -101,6 +101,7 @@ namespace cashRegister
             this.ProductName = ProductName;
             this.Price = Price;
             this.Availability = Availability;
+
         }
     }
 }
