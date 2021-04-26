@@ -98,6 +98,7 @@ namespace cashRegister
         public bool Availability { get; set; }
         public ProductRow(string ProductName, float Price, bool Availability)
         {
+
             this.ProductName = ProductName;
             this.Price = Price;
             this.Availability = Availability;
