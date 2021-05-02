@@ -115,6 +115,34 @@ namespace cashRegister
             addSaleGrid frm = new addSaleGrid();
             frm.ShowDialog();
         }
+
+        private void saveBtn_Click(object sender, EventArgs e)
+        {
+            DateTime now = DateTime.Now;
+            var base_dir = "transactions";
+            string file_name = String.Format("{0}.txt", now.ToString("yyyy-MM-dd.HH.mm.ss"));
+            string full_path = Path.Combine("transactions", file_name);
+            bool exist = Directory.Exists(base_dir);
+            if( !exist)
+            {
+                Directory.CreateDirectory(base_dir);
+            }
+            
+            var file = new StreamWriter(Path.Combine("transactions", file_name));
+
+            file.WriteLine("grand Total:\t{0}", totalPrice.Text);
+            for (int i_row = 0; i_row < cashMain.instance.salesGrid1.RowCount; i_row++)
+            {
+                var row = cashMain.instance.salesGrid1.Rows[i_row];
+                file.WriteLine("Item:\t{0}\tnumber:\t{1}", row.Cells["Items"].Value.ToString(), row.Cells["units"].Value.ToString());
+
+
+            }
+            
+            file.Close();
+            MessageBox.Show("Transaction is saved ! !", "Success!");
+            salesGrid1.Rows.Clear();
+        }
     }
     // class used to read the data
     public class ProductRow
@@ -131,4 +159,5 @@ namespace cashRegister
 
         }
     }
+    
 }
