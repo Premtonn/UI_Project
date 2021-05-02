@@ -147,6 +147,8 @@ namespace cashRegister
         private void deletebtn_Click(object sender, EventArgs e)
         {
             var pRowIndex = salesGrid1.CurrentCell.RowIndex;
+            float new_total = float.Parse(totalPrice.Text) - float.Parse(salesGrid1.Rows[pRowIndex].Cells["total"].Value.ToString());
+            totalPrice.Text = new_total.ToString();
             salesGrid1.Rows.RemoveAt(pRowIndex);
             if(salesGrid1.RowCount <= 0)
             {
