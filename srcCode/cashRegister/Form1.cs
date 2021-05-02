@@ -143,6 +143,16 @@ namespace cashRegister
             MessageBox.Show("Transaction is saved ! !", "Success!");
             salesGrid1.Rows.Clear();
         }
+
+        private void deletebtn_Click(object sender, EventArgs e)
+        {
+            var pRowIndex = salesGrid1.CurrentCell.RowIndex;
+            salesGrid1.Rows.RemoveAt(pRowIndex);
+            if(salesGrid1.RowCount <= 0)
+            {
+                deletebtn.Enabled = false;
+            }
+        }
     }
     // class used to read the data
     public class ProductRow
