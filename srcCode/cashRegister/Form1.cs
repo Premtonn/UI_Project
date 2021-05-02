@@ -18,6 +18,17 @@ namespace cashRegister
     public partial class cashMain : MetroForm
     {
         public static cashMain instance;
+        public static float CalculateTotal()
+        {
+            float result = 0.0f;
+            for(int row_index=0; row_index < cashMain.instance.salesGrid1.RowCount; row_index++)
+            {
+                
+                result += float.Parse(cashMain.instance.salesGrid1.Rows[row_index].Cells["total"].Value.ToString());
+            }
+            return result;
+            
+        }
         public static string getSelectedProductName()
         {
             var index_row = cashMain.instance.productGrid1.CurrentCell.RowIndex;
@@ -36,7 +47,7 @@ namespace cashRegister
             InitializeComponent();
             InitialiseProductGrid();
             InitialiseSalesGrid();
-            cancelBtn.Enabled = false;
+            //cancelBtn.Enabled = false;
             deletebtn.Enabled = false;
         }
         
