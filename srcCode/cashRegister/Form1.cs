@@ -78,6 +78,7 @@ namespace cashRegister
             if(load_dialog.ShowDialog()== DialogResult.OK)
             {
                 //Console.WriteLine(productGrid1.RowCount);
+                productGrid1.Rows.Clear();
                 var reader = new StreamReader(load_dialog.FileName);
                 var csv_reader = new CsvReader(reader, CultureInfo.InvariantCulture);
                 var GetData = csv_reader.GetRecords<ProductRow>();
@@ -119,16 +120,15 @@ namespace cashRegister
         private void saveBtn_Click(object sender, EventArgs e)
         {
             DateTime now = DateTime.Now;
-            var base_dir = "transactions";
+            
             string file_name = String.Format("{0}.txt", now.ToString("yyyy-MM-dd.HH.mm.ss"));
-            string full_path = Path.Combine("transactions", file_name);
+            var base_dir = string.Format(@"transactions\{0}",now.ToString("yyyy-MM-dd"));
             bool exist = Directory.Exists(base_dir);
             if( !exist)
             {
                 Directory.CreateDirectory(base_dir);
             }
-            
-            var file = new StreamWriter(Path.Combine("transactions", file_name));
+            var file = new StreamWriter(Path.Combine(base_dir, file_name));
 
             file.WriteLine("grand Total:\t{0}", totalPrice.Text);
             for (int i_row = 0; i_row < cashMain.instance.salesGrid1.RowCount; i_row++)
