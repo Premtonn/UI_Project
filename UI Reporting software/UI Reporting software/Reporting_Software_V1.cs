@@ -18,7 +18,9 @@ namespace UI_Reporting_software
         {
             Product = GetProduct();
             InitializeComponent();
+
         }
+      
 
         private void Form1_Load(object sender, EventArgs e)
         {
@@ -30,6 +32,7 @@ namespace UI_Reporting_software
         
         private List<Items> GetProduct()
         {
+
             var list = new List<Items>();
             list.Add(new Items()
             {
@@ -61,6 +64,53 @@ namespace UI_Reporting_software
         }
 
         private void label1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label2_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Most_Items_text_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void tableLayoutPanel1_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void chooseTimelineToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Total_sales_text_Click(object sender, EventArgs e)
+        {
+        }
+
+        private void Top_sales_grid_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
+        private void textBox1_TextChanged(object sender, EventArgs e)
+        {
+            Console.WriteLine("Reporting Software");
+            Console.ReadLine();
+
+
+        }
+
+        private void menuStrip1_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
+        {
+
+        }
+
+        private void chooseTimelineToolStripMenuItem_Click_1(object sender, EventArgs e)
         {
 
         }
