@@ -7,17 +7,29 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.IO;
 
 namespace UI_Reporting_software
 {
     public partial class Form1 : Form
     {
+        private string transctions_path { get; set; }
         public List<Items> Product { get; set; }
 
+        public void PrintFile()
+        {
+            var folders = Directory.GetDirectories(transctions_path);
+            foreach(string path in folders)
+            {
+                for(var file in Directory)
+            }
+        }
         public Form1()
         {
+            transctions_path = @"C:\Users\hp\Desktop\myUiProject\UIproject\srcCode\cashRegister\bin\Debug\transactions";
             Product = GetProduct();
             InitializeComponent();
+            PrintFile();
 
         }
       

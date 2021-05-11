@@ -119,14 +119,20 @@ namespace cashRegister
 
         private void saveBtn_Click(object sender, EventArgs e)
         {
-            DateTime now = DateTime.Now;
             
+            DateTime now = DateTime.Now;
+            string document_path = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
             string file_name = String.Format("{0}.txt", now.ToString("yyyy-MM-dd.HH.mm.ss"));
-            var base_dir = string.Format(@"transactions\{0}",now.ToString("yyyy-MM-dd"));
+            string day_folder = string.Format(@"transactions\{0}",now.ToString("yyyy-MM-dd"));
+            string base_dir = Path.Combine(document_path, day_folder);
+            // path for day total
+            string day_total_path = Path.Combine(base_dir, "dayTotal.csv");
             bool exist = Directory.Exists(base_dir);
             if( !exist)
             {
                 Directory.CreateDirectory(base_dir);
+                var day_file = new StreamWriter(day_total_path);
+                day_file.Close();
             }
             var file = new StreamWriter(Path.Combine(base_dir, file_name));
 
@@ -138,6 +144,8 @@ namespace cashRegister
 
 
             }
+            UpdateDayTotal(day_total_path);
+
             
             file.Close();
             MessageBox.Show("Transaction is saved ! !", "Success!");
@@ -155,8 +163,107 @@ namespace cashRegister
                 deletebtn.Enabled = false;
             }
         }
+        private void WriteNew(string path)
+        {
+            var writer = new StreamWriter(path);
+            var csvWriter = new CsvWriter(writer, CultureInfo.InvariantCulture);
+            csvWriter.WriteHeader<DayTotal>();
+            csvWriter.NextRecord();
+            for (int i_row = 0; i_row < cashMain.instance.salesGrid1.RowCount; i_row++)
+            {
+                var row = cashMain.instance.salesGrid1.Rows[i_row];
+                var product = new DayTotal(row.Cells["Items"].Value.ToString(),int.Parse(row.Cells["units"].Value.ToString()));
+                csvWriter.WriteRecord(product);
+                csvWriter.NextRecord();
+
+            }
+            csvWriter.Flush();
+            writer.Close();
+        }
+        //private Tuple<bool, DayTotal> IsExists(string product)
+        //{
+        //    for (int i_row = 0; i_row < cashMain.instance.salesGrid1.RowCount; i_row++)
+        //    {
+        //        var row = cashMain.instance.salesGrid1.Rows[i_row];
+        //        var product_name = row.Cells["Items"].Value.ToString();
+        //        if(product_name == product)
+        //        {
+        //            return new Tuple<bool, DayTotal>(true, new DayTotal(product_name, int.Parse(row.Cells["units"].Value.ToString())));
+                    
+        //        }
+        //        else
+
+
+        //    }
+        //        return true;
+        //}
+        private void Update(string path)
+        {
+            var reader = new StreamReader(path);
+            var csv_reader = new CsvReader(reader, CultureInfo.InvariantCulture);
+            var records = csv_reader.GetRecords<DayTotal>().ToList();
+            reader.Close();
+            for (int i_row = 0; i_row < cashMain.instance.salesGrid1.RowCount; i_row++)
+            {
+                var row = cashMain.instance.salesGrid1.Rows[i_row];
+                var product_name = row.Cells["Items"].Value.ToString();
+                // main file
+                
+                // temporary file
+                //var temp_writer = new StreamWriter(Path.Combine(Path.GetDirectoryName(path), "temp.csv"));
+                //var csv_tempWriter = new CsvWriter(temp_writer, CultureInfo.InvariantCulture);
+                //csv_tempWriter.WriteHeader<DayTotal>();
+                //csv_tempWriter.NextRecord();
+                bool is_found = false;
+                foreach (var row_record in records)
+                {
+                    if (product_name == row_record.product )
+                    {
+                        row_record.count += int.Parse(row.Cells["units"].Value.ToString());
+                        is_found = true;
+                        break;
+                    }
+                    //csv_tempWriter.WriteRecord(row_record);
+                    //csv_tempWriter.NextRecord();
+                }
+                if (is_found)
+                {
+                    continue;
+                }
+                records.Add(new DayTotal(product_name, int.Parse(row.Cells["units"].Value.ToString())));
+
+            }
+            
+            var file = new StreamWriter(path);
+            var csvWriter = new CsvWriter(file, CultureInfo.InvariantCulture);
+            csvWriter.WriteHeader<DayTotal>();
+            csvWriter.NextRecord();
+            foreach (var record in records)
+            {
+                csvWriter.WriteRecord(record);
+                csvWriter.NextRecord();
+
+            }
+            csvWriter.Flush();
+            file.Close();
+
+
+        }
+        private void UpdateDayTotal(string path_csv)
+        {
+            var csvFileLenth = new System.IO.FileInfo(path_csv).Length;
+            if (csvFileLenth == 0)
+            {
+                WriteNew(path_csv);
+
+            }
+            else
+            {
+                Update(path_csv);
+            }
+        }
     }
-    // class used to read the data
+    // class used to read the data from the product csv file
     public class ProductRow
     {
         public string ProductName { get; set; }
@@ -171,5 +278,16 @@ namespace cashRegister
 
         }
     }
-    
+    // class used to update the data for the day total csv file
+    public class DayTotal
+    {
+        public string product { get; set; }
+        public int count { get; set; }
+        public DayTotal(string product, int count)
+        {
+            this.product = product;
+            this.count = count;
+        }
+    }
+
 }
