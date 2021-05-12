@@ -40,9 +40,9 @@ namespace UI_Reporting_software
             this.label2 = new System.Windows.Forms.Label();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.lastWeekbtn = new System.Windows.Forms.RadioButton();
-            this.lastMonthbtn = new System.Windows.Forms.RadioButton();
             this.allTimebtn = new System.Windows.Forms.RadioButton();
+            this.lastMonthbtn = new System.Windows.Forms.RadioButton();
+            this.lastWeekbtn = new System.Windows.Forms.RadioButton();
             this.tableLayoutPanel2.SuspendLayout();
             this.tableLayoutPanel4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Top_sales_grid)).BeginInit();
@@ -113,6 +113,7 @@ namespace UI_Reporting_software
             // 
             // Top_sales_grid
             // 
+            this.Top_sales_grid.AllowUserToAddRows = false;
             this.Top_sales_grid.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.Top_sales_grid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.Top_sales_grid.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -157,6 +158,7 @@ namespace UI_Reporting_software
             // 
             // Total_sales_grid
             // 
+            this.Total_sales_grid.AllowUserToAddRows = false;
             this.Total_sales_grid.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.Total_sales_grid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.Total_sales_grid.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -210,17 +212,17 @@ namespace UI_Reporting_software
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "TimeLine";
             // 
-            // lastWeekbtn
+            // allTimebtn
             // 
-            this.lastWeekbtn.AutoSize = true;
-            this.lastWeekbtn.Location = new System.Drawing.Point(53, 26);
-            this.lastWeekbtn.Name = "lastWeekbtn";
-            this.lastWeekbtn.Size = new System.Drawing.Size(73, 17);
-            this.lastWeekbtn.TabIndex = 0;
-            this.lastWeekbtn.TabStop = true;
-            this.lastWeekbtn.Text = "Last week";
-            this.lastWeekbtn.UseVisualStyleBackColor = true;
-            this.lastWeekbtn.CheckedChanged += new System.EventHandler(this.lastWeekbtn_CheckedChanged);
+            this.allTimebtn.AutoSize = true;
+            this.allTimebtn.Location = new System.Drawing.Point(53, 138);
+            this.allTimebtn.Name = "allTimebtn";
+            this.allTimebtn.Size = new System.Drawing.Size(59, 17);
+            this.allTimebtn.TabIndex = 2;
+            this.allTimebtn.TabStop = true;
+            this.allTimebtn.Text = "All time";
+            this.allTimebtn.UseVisualStyleBackColor = true;
+            this.allTimebtn.CheckedChanged += new System.EventHandler(this.allTimebtn_CheckedChanged);
             // 
             // lastMonthbtn
             // 
@@ -234,17 +236,17 @@ namespace UI_Reporting_software
             this.lastMonthbtn.UseVisualStyleBackColor = true;
             this.lastMonthbtn.CheckedChanged += new System.EventHandler(this.lastMonth_CheckedChanged);
             // 
-            // allTimebtn
+            // lastWeekbtn
             // 
-            this.allTimebtn.AutoSize = true;
-            this.allTimebtn.Location = new System.Drawing.Point(53, 138);
-            this.allTimebtn.Name = "allTimebtn";
-            this.allTimebtn.Size = new System.Drawing.Size(59, 17);
-            this.allTimebtn.TabIndex = 2;
-            this.allTimebtn.TabStop = true;
-            this.allTimebtn.Text = "All time";
-            this.allTimebtn.UseVisualStyleBackColor = true;
-            this.allTimebtn.CheckedChanged += new System.EventHandler(this.allTimebtn_CheckedChanged);
+            this.lastWeekbtn.AutoSize = true;
+            this.lastWeekbtn.Location = new System.Drawing.Point(53, 26);
+            this.lastWeekbtn.Name = "lastWeekbtn";
+            this.lastWeekbtn.Size = new System.Drawing.Size(73, 17);
+            this.lastWeekbtn.TabIndex = 0;
+            this.lastWeekbtn.TabStop = true;
+            this.lastWeekbtn.Text = "Last week";
+            this.lastWeekbtn.UseVisualStyleBackColor = true;
+            this.lastWeekbtn.CheckedChanged += new System.EventHandler(this.lastWeekbtn_CheckedChanged);
             // 
             // Form1
             // 

@@ -49,6 +49,11 @@ namespace cashRegister
             InitialiseSalesGrid();
             //cancelBtn.Enabled = false;
             deletebtn.Enabled = false;
+            productGrid1.ScrollBars = ScrollBars.Both;
+            productGrid1.Height = productGrid1.Height + 1;
+            productGrid1.Width = productGrid1.Width + 1;
+            productGrid1.Height = productGrid1.Height - 1;
+
         }
         
         private void InitialiseProductGrid()
@@ -77,6 +82,7 @@ namespace cashRegister
         {
             if(load_dialog.ShowDialog()== DialogResult.OK)
             {
+                
                 //Console.WriteLine(productGrid1.RowCount);
                 productGrid1.Rows.Clear();
                 var reader = new StreamReader(load_dialog.FileName);
@@ -86,6 +92,7 @@ namespace cashRegister
                 {
                     if(row_data.Availability == true)
                     {
+                        Console.WriteLine(row_data.ProductName);
                         //string[] row = { row_data.ProductName, row_data.Price.ToString() };
                         int rowId = productGrid1.Rows.Add();
 
@@ -101,6 +108,7 @@ namespace cashRegister
                     }
                     
                 }
+                productGrid1.PerformLayout();
                 reader.Close();
                 if(productGrid1.RowCount > 0)
                 {

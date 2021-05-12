@@ -169,8 +169,8 @@ namespace UI_Reporting_software
 
             DateTime previousWeekStart = startingDate.AddDays(-7);
             DateTime previousWeekEnd = startingDate.AddDays(-1);
-            Console.WriteLine(previousWeekStart.ToString("yyyy-MM-dd"));
-            Console.WriteLine(previousWeekEnd.ToString("yyyy-MM-dd"));
+            //Console.WriteLine(previousWeekStart.ToString("yyyy-MM-dd"));
+            //Console.WriteLine(previousWeekEnd.ToString("yyyy-MM-dd"));
             var dirs = AvailableDays(previousWeekStart, previousWeekEnd);
             var listProducts = GetProducts(dirs);
             var orderedProducts = listProducts.OrderByDescending(product => product.count);
@@ -182,8 +182,8 @@ namespace UI_Reporting_software
             var month = new DateTime(today.Year, today.Month, 1);
             var first = month.AddMonths(-1);
             var last = month.AddDays(-1);
-            Console.WriteLine(first.ToString("yyyy-MM-dd"));
-            Console.WriteLine(last.ToString("yyyy-MM-dd"));
+            //Console.WriteLine(first.ToString("yyyy-MM-dd"));
+            //Console.WriteLine(last.ToString("yyyy-MM-dd"));
             var dirs = AvailableDays(first, last);
             var listProducts = GetProducts(dirs);
             var orderedProducts = listProducts.OrderByDescending(product => product.count);
@@ -198,7 +198,7 @@ namespace UI_Reporting_software
         private List<DayTotal> GetProducts(IEnumerable<string> dirs)
         {
             List<DayTotal> all_products = new List<DayTotal>();
-            Console.WriteLine("all !");
+            //Console.WriteLine("all !");
             foreach (string dir in dirs)
             {
 
